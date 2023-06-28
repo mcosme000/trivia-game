@@ -12,7 +12,7 @@ function Provider({children}) {
 
   const callApi = async (formData) => {
     console.log("Getting data");
-    const response = await fetch(`https://opentdb.com/api.php?amount=4&category=${formData.category}&difficulty=${formData.level}&type=multiple`)
+    const response = await fetch(`https://opentdb.com/api.php?amount=5&category=${formData.category}&difficulty=${formData.level}&type=multiple`)
       .then(response => response.json())
       .then(data => data.results)
     setData(response)
