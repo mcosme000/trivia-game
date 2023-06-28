@@ -4,7 +4,7 @@ const TriviaContext = createContext();
 
 function Provider({children}) {
   const [data, setData] = useState([])
-  const [currentQuestion, setCurrentQuestion] = useState(1)
+  const [currentQuestion, setCurrentQuestion] = useState(0)
 
   useEffect(() => {
     console.log('Data updated');
@@ -21,7 +21,8 @@ function Provider({children}) {
   const elements = {
     callApi: callApi,
     data: data,
-    currentQuestion: currentQuestion
+    currentQuestion: currentQuestion,
+    setCurrentQuestion
   }
 
   return (

@@ -13,8 +13,10 @@ const Question = (props) => {
 
   const renderAnswers = shuffledAnswers.map((answer) => {
     const key = uuidv4();
-    return (<Answer key={key} choice={answer.choice} correct={answer.correct} />)
+    return (<Answer key={key} choice={answer.choice}
+      correct={answer.correct} onNextQuestion={props.onNextQuestion}/>)
   })
+
 
   return (
     <div>

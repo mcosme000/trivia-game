@@ -27,7 +27,7 @@ const Form = () => {
     <div>
 
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="bg-blue-100">
           <p>Select a topic</p>
           <div>
             <input

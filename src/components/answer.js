@@ -1,8 +1,15 @@
 import he from "he";
 
 const Answer = (props) => {
+  const { onNextQuestion } = props
+
+  const handleClick = () => {
+    console.log("selected");
+    onNextQuestion()
+  }
+
   return (
-    <p>{he.decode(props.choice)}</p>
+    <p onClick={handleClick}>{he.decode(props.choice)}</p>
   )
 }
 
