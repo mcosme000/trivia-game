@@ -3,8 +3,9 @@ import { createContext, useState, useEffect } from 'react'
 const TriviaContext = createContext();
 
 function Provider({children}) {
-  const [data, setData] = useState([])
-  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [ data, setData ] = useState([])
+  const [ currentQuestion, setCurrentQuestion ] = useState(0)
+  const [ validated, setValidated ] = useState(false)
 
   useEffect(() => {
     console.log('Data updated');
@@ -32,7 +33,9 @@ function Provider({children}) {
     callApi: callApi,
     data: data,
     currentQuestion: currentQuestion,
-    setCurrentQuestion
+    setCurrentQuestion: setCurrentQuestion,
+    validated: validated,
+    setValidated: setValidated
   }
 
   return (

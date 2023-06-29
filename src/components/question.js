@@ -1,24 +1,28 @@
-import Answer from "./answer";
 import he from "he";
-import { v4 as uuidv4 } from 'uuid';
-
+import Answer from "./answer";
 
 const Question = (props) => {
+  const { shuffledAnswers, onNextQuestion, validateAnswer, validated } = props;
+
   const correct = { choice: props.answer, correct: true }
   const answers = props.incorrect.map((answer) => {
     return { choice: answer }
   })
   answers.push(correct)
-  const shuffledAnswers = answers.sort((a, b) => 0.5 - Math.random())
 
   const renderAnswers = shuffledAnswers.map((answer) => {
-    const key = uuidv4();
-    return (<Answer
+    const key = answer.id;
+    return (
+      <Answer
         key={key}
         choice={answer.choice}
         correct={answer.correct}
-        onNextQuestion={props.onNextQuestion}/>)
-  })
+        onNextQuestion={onNextQuestion}
+        validateAnswer={validateAnswer}
+        validated={validated}
+      />
+    );
+  });
 
 
   return (
