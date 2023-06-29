@@ -21,10 +21,10 @@ const Categories = ({onChange}) => {
           name="category"
           value={option.value}
           onChange={handleChange}
-          className={`d-none peer/${option.category}`}
+          className={`d-none peer`}
       />
       <label htmlFor={option.category} className={`inline-block text-sm mb-3 mr-3 bg-indigo-300 px-3 py-1
-      rounded-full peer-checked/${option.category}:bg-indigo-400 hover:cursor-pointer hover:bg-indigo-400`}>{option.label}</label>
+      rounded-full peer-checked:bg-indigo-400 hover:cursor-pointer hover:bg-indigo-400`}>{option.label}</label>
     </div>)
   })
 
