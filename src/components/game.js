@@ -34,7 +34,6 @@ const Game = () => {
   return (
     <div>
       {renderQuestions}
-
       {currentQuestion > 1 && <button onClick={handleNextQuestion}>Go to next question</button> }
     </div>
   )
