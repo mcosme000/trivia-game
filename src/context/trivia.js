@@ -6,6 +6,8 @@ function Provider({children}) {
   const [ data, setData ] = useState([])
   const [ currentQuestion, setCurrentQuestion ] = useState(0)
   const [ validated, setValidated ] = useState(false)
+  const [ score, setScore ] = useState(0)
+  const [ isPlaying, setIsPlaying ] = useState(false)
 
   useEffect(() => {
     console.log('Data updated');
@@ -35,7 +37,11 @@ function Provider({children}) {
     currentQuestion: currentQuestion,
     setCurrentQuestion: setCurrentQuestion,
     validated: validated,
-    setValidated: setValidated
+    setValidated: setValidated,
+    score: score,
+    setScore: setScore,
+    isPlaying: isPlaying,
+    setIsPlaying: setIsPlaying
   }
 
   return (
