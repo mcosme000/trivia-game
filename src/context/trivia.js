@@ -47,8 +47,3 @@ function Provider({children}) {
 
 export default TriviaContext;
 export { Provider }
-
-
-// category: 17 Science & Nature
-// category: 10 Books
-// category: 21 Sports

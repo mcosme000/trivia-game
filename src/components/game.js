@@ -2,21 +2,16 @@ import TriviaContext from "../context/trivia"
 import { useContext, useState, useEffect } from "react"
 import { v4 as uuidv4 } from 'uuid';
 
+
 import Question from "./question"
 
 const Game = () => {
-  const { data, currentQuestion, setCurrentQuestion } = useContext(TriviaContext)
-  const [ validated, setValidated ] = useState(false)
+  const { data, currentQuestion, setCurrentQuestion, validated, setValidated } = useContext(TriviaContext)
   const [ shuffledAnswers, setShuffledAnswers ] = useState([]);
-
-  const validateAnswer = () => {
-    setValidated(true)
-  }
 
   const handleNextQuestion = () => {
     setCurrentQuestion((prevQuestion) => prevQuestion + 1);
     setValidated(false)
-
   };
 
   useEffect(() => {
@@ -26,6 +21,7 @@ const Game = () => {
       });
 
       const correctAnswer = { choice: data[currentQuestion].correct_answer, correct: true };
+
       const allAnswers = [...currentAnswers, correctAnswer];
 
       const shuffled = allAnswers.map((answer, index) => ({
@@ -51,12 +47,9 @@ const Game = () => {
           incorrect={element.incorrect_answers}
           answer={element.correct_answer}
           onNextQuestion={handleNextQuestion}
-          validated={validated}
-          validateAnswer={validateAnswer}
         />
       );
     }
-    return null;
   });
 
   console.log(typeof renderQuestions);
