@@ -27,11 +27,11 @@ const Slider = ({onChange}) => {
   }
 
   return (
-    <div>
-      <label htmlFor="difficulty" className="block mb-2 font-bold text-md">{label}</label>
+    <div className="flex flex-col justify-center items-center">
+      <label htmlFor="difficulty" className="inline-block mb-2 font-bold text-md">{label}</label>
       <input
         id="difficulty"
-        className="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-128 hover:cursor-pointer"
+        className="m-auto w-2/5 h-3 bg-gray-200 rounded appearance-none cursor-pointer range-lg mb-5"
         type="range"
         min="1"
         max="3"
