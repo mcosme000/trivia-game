@@ -74,18 +74,23 @@ const Game = () => {
 
   return (
     <div className="h-screen flex justify-center items-center">
-      { displayScore
-      ? ( <Score displayScore={hideDisplayScore}/> )
-      : (
-        <div className="md:w-3/5 m-auto flex flex-col w-full">
-          <p>{currentQuestion + 1} / 5</p>
-          {renderQuestion}
-          {validated && <div className="p-5 flex items-center bg-gray-100 hover:cursor-pointer" onClick={handleNextQuestion}>
-            <p className="mr-4 align-right">Go to next question</p>
-            <BiRightArrowAlt />
-          </div> }
-        </div>
-     )}
+      <div className="p-8 md:px-2 md:py-5 h-[70%] md:h-[55%] w-[95%] md:w-[50%] bg-white rounded-md shadow-lg">
+        { displayScore
+        ? ( <Score displayScore={hideDisplayScore}/> )
+        : (
+          <div className="h-full md:w-4/5 m-auto flex flex-col items-center justify-between">
+            <div>
+              <p className="inline-block px-3 py-1 mb-4 font-bold text-sm bg-yellow-dark rounded-md">{currentQuestion + 1} / 5</p>
+              {renderQuestion}
+            </div>
+            {validated && <div className="flex items-center bg-yellow hover:bg-yellow-dark text-sm px-4 py-2 rounded-md font-bold tracking-wide cursor-pointer"
+              onClick={handleNextQuestion}>
+              <p className="mr-4 align-right">Go to next question</p>
+              <BiRightArrowAlt />
+            </div> }
+          </div>
+      )}
+     </div>
     </div>
   )
 }

@@ -22,11 +22,11 @@ const Question = (props) => {
   });
 
   return (
-    <div className="px-5">
-      <h2 className="font-bold text-xl text-center mb-8" id={props.id}>
+    <div>
+      <h2 className="font-bold text-md md:text-xl text-center mb-8" id={props.id}>
         {he.decode(props.question)}
       </h2>
-      <div className="grid grid-cols-2 gap-4">{renderAnswers}</div>
+      <div className="p-2 grid md:grid-cols-2 gap-4">{renderAnswers}</div>
     </div>
   );
 };
