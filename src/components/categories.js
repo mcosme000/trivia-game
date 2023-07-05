@@ -21,7 +21,7 @@ const Categories = ({onChange}) => {
           name="category"
           value={option.value}
           onChange={handleChange}
-          className={`d-none peer`}
+          className="hidden peer"
       />
       <label htmlFor={option.category} className={`inline-block border-2 border-black border text-sm mb-3 mr-3 px-5 py-1
       rounded-md peer-checked:bg-yellow-dark hover:cursor-pointer hover:bg-yellow-dark`}>{option.label}</label>

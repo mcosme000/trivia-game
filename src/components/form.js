@@ -1,15 +1,10 @@
 import TriviaContext from "../context/trivia";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Categories from "./categories";
 import Slider from "./slider";
 
 const Form = () => {
-  const [formData, setFormData] = useState({
-    category: '',
-    difficulty: ''
-  })
-
-  const { callApi, setCurrentQuestion, setIsPlaying, setScore } = useContext(TriviaContext)
+  const { formData, setFormData, callApi, setCurrentQuestion, setIsPlaying, setScore } = useContext(TriviaContext)
 
   const handleChange = (e) => {
     setFormData((prevState) => {

@@ -17,15 +17,12 @@ const Game = () => {
   };
 
   const hideDisplayScore = () => {
-    console.log("changing the score display to false");
     setCurrentQuestion(0)
     setDisplayScore(false)
     setIsPlaying(false)
-    console.log(displayScore);
   }
 
   const handleDisplayScore = () => {
-    console.log("We are going to SHOW the score now");
     setDisplayScore(true)
   }
 
@@ -74,9 +71,9 @@ const Game = () => {
 
   return (
     <div className="h-screen flex justify-center items-center">
-      <div className="p-8 md:px-2 md:py-5 h-[70%] md:h-[55%] w-[95%] md:w-[50%] bg-white rounded-md shadow-lg">
+      <div className="p-8 md:px-2 md:py-7 h-[70%] md:h-[55%] w-[95%] md:w-[65%] lg:w-[45%] bg-white rounded-md shadow-lg">
         { displayScore
-        ? ( <Score displayScore={hideDisplayScore}/> )
+        ? ( <Score hideScore={hideDisplayScore}/> )
         : (
           <div className="h-full md:w-4/5 m-auto flex flex-col items-center justify-between">
             <div>

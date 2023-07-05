@@ -23,7 +23,7 @@ const Question = (props) => {
 
   return (
     <div>
-      <h2 className="font-bold text-md md:text-xl text-center mb-8" id={props.id}>
+      <h2 className="font-bold text-md md:text-lg text-center mb-8" id={props.id}>
         {he.decode(props.question)}
       </h2>
       <div className="p-2 grid md:grid-cols-2 gap-4">{renderAnswers}</div>

@@ -8,9 +8,14 @@ function Provider({children}) {
   const [ validated, setValidated ] = useState(false)
   const [ score, setScore ] = useState(0)
   const [ isPlaying, setIsPlaying ] = useState(false)
+  const [ formData, setFormData] = useState({
+    category: '',
+    difficulty: ''
+  })
+
+
 
   useEffect(() => {
-    console.log('Data updated');
   }, [data]);
 
   const callApi = async (formData) => {
@@ -34,6 +39,8 @@ function Provider({children}) {
   const elements = {
     callApi: callApi,
     data: data,
+    formData: formData,
+    setFormData: setFormData,
     currentQuestion: currentQuestion,
     setCurrentQuestion: setCurrentQuestion,
     validated: validated,
