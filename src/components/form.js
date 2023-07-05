@@ -9,7 +9,7 @@ const Form = () => {
     difficulty: ''
   })
 
-  const { callApi, setCurrentQuestion, setIsPlaying } = useContext(TriviaContext)
+  const { callApi, setCurrentQuestion, setIsPlaying, setScore } = useContext(TriviaContext)
 
   const handleChange = (e) => {
     setFormData((prevState) => {
@@ -25,6 +25,7 @@ const Form = () => {
     setIsPlaying(true)
     callApi(formData)
     setCurrentQuestion(0)
+    setScore(0)
   }
 
   return (
