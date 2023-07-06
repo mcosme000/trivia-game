@@ -14,19 +14,16 @@ const Answer = (props) => {
     }
   }
 
-  const answerClasses = classNames("flex justify-center items-center px-6 py-4 border-black font-bold text-xs md:text-sm shadow-custom border text-center border-2 rounded-xl hover:cursor-pointer", {
-    "bg-green text-white": validated && correct,
-    "bg-red text-white": validated && !correct,
+  const answerClasses = classNames("flex justify-center items-center border-black font-bold text-xs md:text-sm shadow-custom border text-center border-2 rounded-xl hover:cursor-pointer", {
+    "bg-green": validated && correct,
+    "bg-red": validated && !correct,
     "bg-white": !validated,
   });
 
   return (
-    <div
-      id={correct && "true"}
-      className={answerClasses}
-      onClick={validateAnswer}
-    >
-      <p>{he.decode(props.choice)}</p>
+    <div className={answerClasses}>
+      <p id={correct && "true"} onClick={validateAnswer}
+      className="px-6 py-4">{he.decode(props.choice)}</p>
     </div>
   );
 };

@@ -8,8 +8,8 @@ module.exports = {
         "custom": "0px 2px 0px #000",
       },
       colors: {
-        "green": "#4C9F70",
-        "red": "#B0413E",
+        "green": "#55EB96",
+        "red": "#FF6F59",
         "black": "#181D27",
         "blue": "#05EDD0",
         "blue-dark": "#3CB6A8",
