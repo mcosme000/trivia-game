@@ -4,4 +4,5 @@
 
 ## Project view
 
-<img src="./src/media/project-img.png">
+<img src="./src/media/trivia01.png">
+<img src="./src/media/trivia02.png">
