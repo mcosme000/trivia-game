@@ -1,27 +1,39 @@
-import TriviaContext from "../context/trivia";
-import { useContext } from "react";
+import { startGame, updateFormData, fetchTriviaData } from "../slices/triviaSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+
 import Categories from "./categories";
 import Slider from "./slider";
 
 const Form = () => {
-  const { formData, setFormData, callApi, setCurrentQuestion, setIsPlaying, setScore } = useContext(TriviaContext)
+  const dispatch = useDispatch()
+  const formData = useSelector((state) => state.trivia.formData)
+
+  useEffect(() => {
+  }, [formData])
 
   const handleChange = (e) => {
-    setFormData((prevState) => {
-      return {
-        ...prevState,
-        [e.target.name]: e.target.value
-      }
-    })
+    const { name, value } = e.target
+    dispatch(updateFormData({name: name, value: value}))
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsPlaying(true)
-    callApi(formData)
-    setCurrentQuestion(0)
-    setScore(0)
+    e.preventDefault()
+    console.log(`Submitting form with category: ${formData['category']} and difficulty: ${formData['difficulty']}`);
+    dispatch(fetchTriviaData(formData))
+    dispatch(startGame())
   }
+
+
+  // const { formData, setFormData, callApi, setCurrentQuestion, setIsPlaying, setScore } = useContext(TriviaContext)
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setIsPlaying(true)
+  //   callApi(formData)
+  //   setCurrentQuestion(0)
+  //   setScore(0)
+  // }
 
   return (
     <div className="h-screen flex flex-col justify-center items-center">
