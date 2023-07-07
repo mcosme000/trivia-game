@@ -71,12 +71,12 @@ const Game = () => {
 
   return (
     <div className="h-screen flex justify-center items-center">
-      <div className="p-8 md:px-2 md:py-7 h-[70%] md:h-[55%] w-[95%] md:w-[65%] lg:w-[45%] bg-white rounded-md shadow-lg">
+      <div className="p-5 md:p-8 h-[70%] md:h-[55%] w-[95%] md:w-[65%] lg:w-[45%] bg-white rounded-md shadow-lg">
         { displayScore
         ? ( <Score hideScore={hideDisplayScore}/> )
         : (
-          <div className="h-full md:w-4/5 m-auto flex flex-col items-center justify-between">
-            <div>
+          <div className="h-full w-full m-auto flex flex-col items-center justify-between bg-purple-300">
+            <div className="w-full">
               <p className="inline-block px-3 py-1 mb-4 font-bold text-sm bg-yellow-dark rounded-md">{currentQuestion + 1} / 5</p>
               {renderQuestion}
             </div>
