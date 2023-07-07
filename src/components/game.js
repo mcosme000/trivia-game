@@ -19,10 +19,6 @@ const Game = () => {
     dispatch(resetValidated())
   };
 
-  const handleDisplayScore = () => {
-    dispatch(updateShowScore())
-  }
-
   useEffect(() => {
     if (currentQuestion >= 0 && currentQuestion < triviaData.length) {
       const currentAnswers = triviaData[currentQuestion].incorrect_answers.map((answer) => {
@@ -43,9 +39,9 @@ const Game = () => {
       setShuffledAnswers(shuffled);
     }
     if (currentQuestion === 5) {
-      handleDisplayScore()
+      dispatch(updateShowScore())
     }
-  }, [currentQuestion, triviaData]);
+  }, [currentQuestion, triviaData, dispatch]);
 
   const renderQuestion = triviaData.map((element, index) => {
     const key = uuidv4();
