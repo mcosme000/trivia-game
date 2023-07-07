@@ -1,38 +1,36 @@
-import TriviaContext from "../context/trivia"
-import { useContext, useState, useEffect } from "react"
+// import TriviaContext from "../context/trivia"
+import { useState, useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux";
+import { updateCurrentQuestion, resetValidated, updateShowScore } from "../slices/triviaSlice";
 import { v4 as uuidv4 } from 'uuid';
 import { BiRightArrowAlt } from "react-icons/bi";
-
 import Question from "./question"
 import Score from "./score";
 
 const Game = () => {
-  const { data, currentQuestion, setCurrentQuestion, validated, setValidated, setIsPlaying } = useContext(TriviaContext)
+  const dispatch = useDispatch()
+  const triviaData = useSelector((state) => state.trivia.triviaData)
+  const currentQuestion = useSelector((state) => state.trivia.currentQuestion)
+  const isValidated = useSelector((state) => state.trivia.isValidated)
+  const displayScore = useSelector((state) => state.trivia.displayScore)
   const [ shuffledAnswers, setShuffledAnswers ] = useState([]);
-  const [ displayScore, setDisplayScore ] = useState(false)
 
   const handleNextQuestion = () => {
-    setCurrentQuestion((prevQuestion) => prevQuestion + 1);
-    setValidated(false)
+    dispatch(updateCurrentQuestion());
+    dispatch(resetValidated())
   };
 
-  const hideDisplayScore = () => {
-    setCurrentQuestion(0)
-    setDisplayScore(false)
-    setIsPlaying(false)
-  }
-
   const handleDisplayScore = () => {
-    setDisplayScore(true)
+    dispatch(updateShowScore())
   }
 
   useEffect(() => {
-    if (currentQuestion >= 0 && currentQuestion < data.length) {
-      const currentAnswers = data[currentQuestion].incorrect_answers.map((answer) => {
+    if (currentQuestion >= 0 && currentQuestion < triviaData.length) {
+      const currentAnswers = triviaData[currentQuestion].incorrect_answers.map((answer) => {
         return { choice: answer, correct: false };
       });
 
-      const correctAnswer = { choice: data[currentQuestion].correct_answer, correct: true };
+      const correctAnswer = { choice: triviaData[currentQuestion].correct_answer, correct: true };
 
       const allAnswers = [...currentAnswers, correctAnswer];
 
@@ -49,9 +47,9 @@ const Game = () => {
       console.log("Last question!! Now we will display the score");
       handleDisplayScore()
     }
-  }, [currentQuestion, data, setIsPlaying]);
+  }, [currentQuestion, triviaData]);
 
-  const renderQuestion = data.map((element, index) => {
+  const renderQuestion = triviaData.map((element, index) => {
     const key = uuidv4();
     if (index === currentQuestion) {
       return (
@@ -73,14 +71,14 @@ const Game = () => {
     <div className="h-screen flex justify-center items-center">
       <div className="p-5 md:p-8 h-[70%] md:h-[55%] w-[95%] md:w-[65%] lg:w-[45%] bg-white rounded-md shadow-lg">
         { displayScore
-        ? ( <Score hideScore={hideDisplayScore}/> )
+        ? ( <Score /> )
         : (
-          <div className="h-full w-full m-auto flex flex-col items-center justify-between bg-purple-300">
+          <div className="h-full w-full m-auto flex flex-col items-center justify-between">
             <div className="w-full">
               <p className="inline-block px-3 py-1 mb-4 font-bold text-sm bg-yellow-dark rounded-md">{currentQuestion + 1} / 5</p>
               {renderQuestion}
             </div>
-            {validated && <div className="flex items-center bg-yellow hover:bg-yellow-dark text-sm px-4 py-2 rounded-md font-bold tracking-wide cursor-pointer"
+            {isValidated && <div className="flex items-center bg-yellow hover:bg-yellow-dark text-sm px-4 py-2 rounded-md font-bold tracking-wide cursor-pointer"
               onClick={handleNextQuestion}>
               <p className="mr-4 align-right">Go to next question</p>
               <BiRightArrowAlt />

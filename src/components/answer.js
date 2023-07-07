@@ -1,23 +1,26 @@
 import he from "he";
 import classNames from "classnames";
-import { useContext } from "react";
-import TriviaContext from "../context/trivia";
+// import { useContext } from "react";
+// import TriviaContext from "../context/trivia";
+import { useSelector, useDispatch } from "react-redux";
+import { validateQuestion, addScore } from "../slices/triviaSlice";
 
 const Answer = (props) => {
+  const dispatch = useDispatch();
+  const isValidated = useSelector((state) => state.trivia.isValidated)
   const { correct } = props;
-  const { validated, setValidated, setScore } = useContext(TriviaContext);
 
   const validateAnswer = (e) => {
-    setValidated(true)
+    dispatch(validateQuestion())
     if (e.target.hasAttribute('id')) {
-      setScore((prevScore) => prevScore += 1)
+      dispatch(addScore())
     }
   }
 
   const answerClasses = classNames("flex justify-center items-center border-black font-bold text-xs md:text-sm shadow-custom border text-center border-2 rounded-xl hover:cursor-pointer", {
-    "bg-green": validated && correct,
-    "bg-red": validated && !correct,
-    "bg-white": !validated,
+    "bg-green": isValidated && correct,
+    "bg-red": isValidated && !correct,
+    "bg-white": !isValidated,
   });
 
   return (

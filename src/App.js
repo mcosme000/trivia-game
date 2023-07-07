@@ -1,10 +1,9 @@
 import Form from "./components/form";
 import Game from "./components/game";
-import TriviaContext from "./context/trivia";
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 
 function App() {
-  const { isPlaying } = useContext(TriviaContext)
+  const isPlaying = useSelector((state) => state.trivia.isPlaying)
   return (
     <div className="w-full h-screen p-4">
       {isPlaying ? <Game /> : <Form />}
