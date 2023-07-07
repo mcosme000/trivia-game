@@ -1,5 +1,3 @@
-
-
 const callApi = async (formData) => {
   let difficulty = "easy"
   switch (formData.difficulty) {

@@ -1,4 +1,3 @@
-// import TriviaContext from "../context/trivia"
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { updateCurrentQuestion, resetValidated, updateShowScore } from "../slices/triviaSlice";
@@ -44,7 +43,6 @@ const Game = () => {
       setShuffledAnswers(shuffled);
     }
     if (currentQuestion === 5) {
-      console.log("Last question!! Now we will display the score");
       handleDisplayScore()
     }
   }, [currentQuestion, triviaData]);

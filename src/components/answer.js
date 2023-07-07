@@ -1,9 +1,7 @@
-import he from "he";
-import classNames from "classnames";
-// import { useContext } from "react";
-// import TriviaContext from "../context/trivia";
 import { useSelector, useDispatch } from "react-redux";
 import { validateQuestion, addScore } from "../slices/triviaSlice";
+import he from "he";
+import classNames from "classnames";
 
 const Answer = (props) => {
   const dispatch = useDispatch();

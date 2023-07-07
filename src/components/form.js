@@ -1,7 +1,6 @@
 import { startGame, updateFormData, fetchTriviaData } from "../slices/triviaSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-
 import Categories from "./categories";
 import Slider from "./slider";
 
@@ -19,24 +18,12 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(`Submitting form with category: ${formData['category']} and difficulty: ${formData['difficulty']}`);
     dispatch(fetchTriviaData(formData))
     dispatch(startGame())
   }
 
-
-  // const { formData, setFormData, callApi, setCurrentQuestion, setIsPlaying, setScore } = useContext(TriviaContext)
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setIsPlaying(true)
-  //   callApi(formData)
-  //   setCurrentQuestion(0)
-  //   setScore(0)
-  // }
-
   return (
-    <div className="h-screen flex flex-col justify-center items-center">
+    <div className="h-screen flex flex-col justify-center items-center m-auto w-[95%]">
       <div className="bg-white py-8 px-2 flex flex-col items-center rounded-md shadow-lg relative">
         <div className="absolute top-[-80px] w-[150px] h-[150px] rounded-full bg-white flex justify-center items-center">
           <img src={require('../media/quiz.png')} alt="trivia game logo"

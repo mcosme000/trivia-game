@@ -68,7 +68,6 @@ const triviaSlice = createSlice({
       .addCase(fetchTriviaData.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.triviaData = action.payload;
-        console.log(state.triviaData);
       })
       .addCase(fetchTriviaData.rejected, (state, action) => {
         state.status = 'failed';

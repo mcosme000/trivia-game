@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 function App() {
   const isPlaying = useSelector((state) => state.trivia.isPlaying)
   return (
-    <div className="w-full h-screen p-4">
+    <div className="w-full h-screen">
       {isPlaying ? <Game /> : <Form />}
     </div>
   );

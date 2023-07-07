@@ -29,7 +29,7 @@ const Categories = ({onChange}) => {
   })
 
   return (
-    <div className="mt-6mb-4">
+    <div className="mt-8">
       <h3 className="mb-2 font-bold text-md">Select a topic</h3>
       <div className="flex flex-wrap">
         {renderOptions}
