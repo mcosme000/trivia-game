@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import triviaSlice from "../slices/triviaSlice";
+import { triviaSliceReducer } from "../slices/triviaSlice"
 
 const store = configureStore({
   reducer: {
-    trivia: triviaSlice.reducer
+    trivia: triviaSliceReducer
   }
 })
 

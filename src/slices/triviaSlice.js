@@ -11,6 +11,7 @@ const triviaSlice = createSlice({
   initialState: {
     triviaData: [],
     status: '',
+    error: null,
     currentQuestion: 0,
     isValidated: false,
     score: 0,
@@ -68,6 +69,8 @@ const triviaSlice = createSlice({
       .addCase(fetchTriviaData.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.triviaData = action.payload;
+        console.log("Data from the extraReducer:");
+        console.log(state.triviaData);
       })
       .addCase(fetchTriviaData.rejected, (state, action) => {
         state.status = 'failed';
@@ -77,4 +80,4 @@ const triviaSlice = createSlice({
 })
 
 export const { updateFormData, startGame, finishGame, addScore, resetScore, updateCurrentQuestion, resetCurrentQuestion, validateQuestion, resetValidated, updateShowScore } = triviaSlice.actions;
-export default triviaSlice;
+export const triviaSliceReducer = triviaSlice.reducer
