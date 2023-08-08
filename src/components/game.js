@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { updateCurrentQuestion, resetValidated, updateShowScore } from "../slices/triviaSlice";
+import { updateShowScore } from "../slices/triviaSlice";
 import { v4 as uuidv4 } from 'uuid';
-import { BiRightArrowAlt } from "react-icons/bi";
 import Question from "./question"
+import Button from "./button";
 import Score from "./score";
 
 const Game = () => {
@@ -13,11 +13,6 @@ const Game = () => {
   const isValidated = useSelector((state) => state.trivia.isValidated)
   const displayScore = useSelector((state) => state.trivia.displayScore)
   const [ shuffledAnswers, setShuffledAnswers ] = useState([]);
-
-  const handleNextQuestion = () => {
-    dispatch(updateCurrentQuestion());
-    dispatch(resetValidated())
-  };
 
   useEffect(() => {
     if (currentQuestion >= 0 && currentQuestion < triviaData.length) {
@@ -54,7 +49,6 @@ const Game = () => {
           shuffledAnswers={shuffledAnswers}
           incorrect={element.incorrect_answers}
           answer={element.correct_answer}
-          onNextQuestion={handleNextQuestion}
         />
       );
     }
@@ -69,14 +63,14 @@ const Game = () => {
         : (
           <div className="h-full w-full m-auto flex flex-col items-center justify-between">
             <div className="w-full">
+              <p>quit game</p>
               <p className="inline-block px-3 py-1 mb-4 font-bold text-sm bg-yellow-dark rounded-md">{currentQuestion + 1} / 5</p>
               {renderQuestion}
             </div>
-            {isValidated && <div className="flex items-center bg-yellow hover:bg-yellow-dark text-sm px-4 py-2 rounded-md font-bold tracking-wide cursor-pointer"
-              onClick={handleNextQuestion}>
-              <p className="mr-4 align-right">Go to next question</p>
-              <BiRightArrowAlt />
-            </div> }
+            <Button
+              active={isValidated}
+              content={"Go to next question"}
+            />
           </div>
       )}
      </div>

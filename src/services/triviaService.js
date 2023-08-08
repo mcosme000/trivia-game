@@ -10,10 +10,16 @@ const callApi = async (formData) => {
     default: difficulty = "easy"
       break;
   }
-  const response = await fetch(`https://opentdb.com/api.php?amount=5&category=${formData.category}&difficulty=${difficulty}&type=multiple`)
-    .then(response => response.json())
-    .then(data => data.results)
-  return response
+
+  try {
+    const response = await fetch(`https://opentdb.com/api.php?amount=5&category=${formData.category}&difficulty=${difficulty}&type=multiple`)
+      .then(response => response.json())
+      .then(data => data.results)
+    return response
+  }
+  catch (error) {
+    throw new Error("Failed to fetch data")
+  }
 }
 
 export default callApi
