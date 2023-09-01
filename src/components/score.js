@@ -1,8 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
 import { finishGame, resetScore, resetCurrentQuestion, updateShowScore } from "../slices/triviaSlice";
-import Lottie from "react-lottie";
-import AnimationData from "../lotties/celebration.json"
-import GameLost from "../lotties/bw.json"
 
 const Score = () => {
   const dispatch = useDispatch()
@@ -15,44 +12,8 @@ const Score = () => {
     dispatch(updateShowScore())
   }
 
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: AnimationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
-  };
-
-  const gameLost = {
-    loop: true,
-    autoplay: true,
-    animationData: GameLost,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
-  };
-
   return (
     <div className="flex justify-center flex-col items-center h-full">
-      <div className="w-full h-full relative">
-        { score === 0 &&
-           <Lottie
-            options={gameLost}
-            height={200}
-            width={300}
-            isClickToPauseDisabled
-          />
-        }
-        { score > 0 &&
-          <Lottie
-            options={defaultOptions}
-            height={"100%"}
-            width={"100%"}
-            isClickToPauseDisabled
-          />
-        }
-      </div>
       <div className="absolute flex flex-col justify-center items-center">
         { score === 0 && <p>Ups...! You didn't get any answer correct. </p>}
         { score > 0 && <p>You got <strong>{score}</strong> correct answer{score > 1 && 's'}!</p>}
