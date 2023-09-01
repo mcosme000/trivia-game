@@ -13,6 +13,11 @@ const hintSlice = createSlice({
     status: "",
     error: null
   },
+  reducers: {
+    updateHint(state, action) {
+      console.log(action);
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchHint.pending, (state) => {
@@ -21,6 +26,8 @@ const hintSlice = createSlice({
       .addCase(fetchHint.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.hint = action.payload;
+        console.log("Hint from the extrareducer");
+        console.log(state.hint);
       })
       .addCase(fetchHint.rejected, (state, action) => {
         state.status = "failed";
