@@ -1,21 +1,27 @@
 import React from 'react'
 import { fetchHint } from '../slices/hintSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateDisplayHint } from '../slices/hintSlice';
+import Hint from './hint';
 
-const Hint = (props) => {
+const HintContainer = (props) => {
   const dispatch = useDispatch()
+  const { displayHint } = useSelector((state) => state.hint)
+
   let answers = "";
   props.answers.forEach((answer) => answers += `${answer.choice}, `)
-  // const { status, error, hint } = useSelector((state) => state.hint)
-  // console.log(status);
-  // console.log(error);
-  // console.log(hint);
+
+  const handleClick = () => {
+    dispatch(updateDisplayHint())
+    dispatch(fetchHint({question: props.question, answers}))
+  }
 
   return (
     <div>
-      <button onClick={() => dispatch(fetchHint({question: props.question, answers}))}>Get hint!</button>
+      <button onClick={handleClick}>Get hint!</button>
+      {displayHint && <Hint />}
     </div>
   )
 }
 
-export default Hint
+export default HintContainer
