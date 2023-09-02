@@ -26,7 +26,6 @@ const hintSlice = createSlice({
       .addCase(fetchHint.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.hint = action.payload;
-        console.log(state.hint);
       })
       .addCase(fetchHint.rejected, (state, action) => {
         state.status = "failed";
