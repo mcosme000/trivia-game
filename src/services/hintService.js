@@ -6,11 +6,10 @@ const openai = new OpenAI({
   dangerouslyAllowBrowser: true,
 });
 
-const getHint = async (question) => {
-  console.log(`Getting a hint about this question: ${question}`);
+const getHint = async (question, answers) => {
   const chatCompletion = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
-    messages: [{"role": "user", "content": `Can you give me a hint for this question? ${question}`}],
+    messages: [{"role": "user", "content": `Without giving me the answer, give me a short hint for this question: ${question}. These are the possible answers: ${answers}.`}],
   });
   console.log(chatCompletion.choices[0].message.content);
 }

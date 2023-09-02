@@ -1,6 +1,6 @@
 import he from "he";
 import Answer from "./answer";
-import Hint from "./hint";
+import HintContainer from "./hintContainer";
 
 const Question = (props) => {
   const { shuffledAnswers } = props;
@@ -10,7 +10,6 @@ const Question = (props) => {
     return { choice: answer };
   });
   answers.push(correct);
-
   const renderAnswers = shuffledAnswers.map((answer) => {
     const key = answer.id;
     return (
@@ -24,7 +23,7 @@ const Question = (props) => {
 
   return (
     <div>
-      <Hint question={he.decode(props.question)} />
+      <HintContainer question={he.decode(props.question)} answers={shuffledAnswers}/>
       <h2 className="font-bold text-md md:text-lg text-center mb-8" id={props.id}>
         {he.decode(props.question)}
       </h2>

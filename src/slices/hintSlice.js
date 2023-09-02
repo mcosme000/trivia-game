@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import getHint from "../services/hintService";
 
-export const fetchHint = createAsyncThunk('hint/getHint', async (data) => {
-  const hint = await getHint(data);
+export const fetchHint = createAsyncThunk('hint/getHint', async ({ question, answers }) => {
+  const hint = await getHint(question, answers);
   return hint;
 })
 
@@ -26,7 +26,6 @@ const hintSlice = createSlice({
       .addCase(fetchHint.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.hint = action.payload;
-        console.log("Hint from the extrareducer");
         console.log(state.hint);
       })
       .addCase(fetchHint.rejected, (state, action) => {
