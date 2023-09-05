@@ -17,8 +17,10 @@ const HintContainer = (props) => {
   }
 
   return (
-    <div>
-      <button onClick={handleClick}>Get hint!</button>
+    <div className="relative top-[-40px] right-0 flex flex-col">
+      <button
+        className="self-end bg-yellow flex items-center text-sm px-4 py-2 rounded-md font-bold tracking-wide"
+        onClick={handleClick}>Get hint!</button>
       {displayHint && <Hint />}
     </div>
   )

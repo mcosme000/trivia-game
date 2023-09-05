@@ -7,7 +7,7 @@ const Hint = () => {
   } = useSelector((state) => state.hint)
 
   return (
-    <div>{hint}</div>
+    <div className="p-3 rounded bg-gray-100">{hint}</div>
   )
 }
 
