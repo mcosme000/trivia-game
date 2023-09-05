@@ -17,10 +17,16 @@ const HintContainer = (props) => {
   }
 
   return (
-    <div className="relative top-[-40px] right-0 flex flex-col">
-      <button
-        className="self-end bg-yellow flex items-center text-sm px-4 py-2 rounded-md font-bold tracking-wide"
-        onClick={handleClick}>Get hint!</button>
+    <div className="absolute top-[-60px] right-[-30px] flex flex-col">
+      <div
+        className="h-[50px] w-[50px] flex items-center self-end bg-gray-300 flex items-center text-sm px-3 py-1 rounded-full font-bold tracking-wide hover:bg-gray-400 hover:cursor-pointer"
+        onClick={handleClick}>
+        <img
+          className="w-[25px]"
+          src={require('../media/hint.png')}
+          alt="trivia game logo"
+        />
+        </div>
       {displayHint && <Hint />}
     </div>
   )

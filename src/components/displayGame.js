@@ -57,19 +57,23 @@ const DisplayGame = () => {
   });
 
   return (
-    <>
+    <div className="relative h-full">
       { displayScore
       ? ( <Score /> )
       : (
         <div className="h-full w-full m-auto flex flex-col items-center justify-between">
-          <div className="w-full">
+          <div className="w-full flex-1">
             <p className="inline-block px-3 py-1 mb-4 font-bold text-sm bg-yellow-dark rounded-md">{currentQuestion + 1} / 5</p>
             {renderQuestion}
           </div>
-          <Button active={isValidated} content={"Go to next question"} />
+          <Button
+            active={isValidated}
+            content={"Go to next question"}
+            next
+          />
         </div>
     )}
-    </>
+    </div>
   )
 }
 
