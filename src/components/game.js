@@ -9,7 +9,7 @@ const Game = () => {
   } = useSelector((state) => state.trivia)
 
   const containerStyles = "h-screen flex justify-center items-center"
-  const innerContainerStyles = "p-5 md:p-8 h-[70%] md:h-[55%] w-[95%] md:w-[65%] lg:w-[45%] bg-white rounded-md shadow-lg"
+  const innerContainerStyles = "p-5 md:p-8 h-[80%] md:h-[60%] w-[95%] md:w-[65%] lg:w-[50%] bg-white rounded-md shadow-lg"
   const centered = "flex justify-center items-center"
 
   if (status === 'loading') {

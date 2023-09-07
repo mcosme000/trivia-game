@@ -31,7 +31,7 @@ const Slider = ({onChange}) => {
       <label htmlFor="difficulty" className="inline-block mb-2 font-bold text-md">{label}</label>
       <input
         id="difficulty"
-        className="m-auto w-full md:w-2/5 h-3 bg-gray-200 rounded appearance-none cursor-pointer range-lg mb-5"
+        className="m-auto w-4/5 md:w-2/5 h-3 bg-gray-200 rounded appearance-none cursor-pointer range-lg mb-5"
         type="range"
         min="1"
         max="3"

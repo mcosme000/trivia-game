@@ -23,13 +23,13 @@ const Categories = ({onChange}) => {
           onChange={handleChange}
           className="hidden peer"
       />
-      <label htmlFor={option.category} className={`inline-block border-2 border-black border text-sm mb-3 mr-3 px-5 py-1
-      rounded-md peer-checked:bg-yellow-dark hover:cursor-pointer hover:bg-yellow-dark`}>{option.label}</label>
+      <label htmlFor={option.category} className={`inline-block text-sm mb-3 mr-3 px-3 py-[0.5px] sm:px-5 sm:py-2
+      rounded-md bg-grey peer-checked:bg-yellow-dark hover:cursor-pointer hover:bg-grey-dark`}>{option.label}</label>
     </div>)
   })
 
   return (
-    <div className="mt-8">
+    <div className="mt-8 py-3">
       <h3 className="mb-2 font-bold text-md">Select a topic</h3>
       <div className="flex flex-wrap">
         {renderOptions}
