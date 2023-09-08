@@ -7,7 +7,7 @@ const Hint = () => {
   } = useSelector((state) => state.hint)
 
   return (
-    <div className="self-end text-sm m-2 w-[80%] md:w-[400px] p-3 rounded bg-gray-100">
+    <div className="self-end text-xs sm:text-sm m-2 p-2 w-[80%] sm:w-[400px] rounded bg-gray-100 shadow-md">
       {hint}
     </div>
   )

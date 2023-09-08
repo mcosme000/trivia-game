@@ -24,7 +24,7 @@ const Answer = (props) => {
   return (
     <div className={answerClasses}>
       <p id={correct && "true"} onClick={validateAnswer}
-      className="w-full px-6 py-4">{he.decode(props.choice)}</p>
+      className="w-full px-4 py-3 sm:px-6 sm:py-4">{he.decode(props.choice)}</p>
     </div>
   );
 };
