@@ -6,7 +6,7 @@ import Hint from './hint';
 
 const HintContainer = (props) => {
   const dispatch = useDispatch()
-  const { displayHint, status } = useSelector((state) => state.hint)
+  const { displayHint } = useSelector((state) => state.hint)
 
   let answers = "";
   props.answers.forEach((answer) => answers += `${answer.choice}, `)
@@ -27,8 +27,7 @@ const HintContainer = (props) => {
           alt="trivia game logo"
         />
         </div>
-      { status === "error" && <p>Couldn't get a hint, try again later</p>}
-      { status === "loading" ? console.log("loading") : displayHint && <Hint />}
+      { displayHint && <Hint />}
     </div>
   )
 }
