@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { updateShowScore } from "../slices/triviaSlice";
+import { updateShowScore, finishGame } from "../slices/triviaSlice";
 import { v4 as uuidv4 } from 'uuid';
 import Question from "./question"
 import Button from "./button";
@@ -14,6 +14,10 @@ const DisplayGame = () => {
   const isValidated = useSelector((state) => state.trivia.isValidated)
   const displayScore = useSelector((state) => state.trivia.displayScore)
   const [ shuffledAnswers, setShuffledAnswers ] = useState([]);
+
+  const handleClick = () => {
+    dispatch(finishGame());
+  }
 
   useEffect(() => {
     if (currentQuestion >= 0 && currentQuestion < triviaData.length) {
@@ -66,11 +70,14 @@ const DisplayGame = () => {
             <p className="inline-block px-3 py-1 mb-4 font-bold text-sm bg-yellow-dark rounded-md">{currentQuestion + 1} / 5</p>
             {renderQuestion}
           </div>
-          <Button
-            active={isValidated}
-            content={"Go to next question"}
-            next
-          />
+          <div className="w-full flex flex-start bg-blue">
+            <p onClick={handleClick}>Exit game</p>
+            <Button
+              active={isValidated}
+              content={"Go to next question"}
+              next
+            />
+          </div>
         </div>
     )}
     </div>
