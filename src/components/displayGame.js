@@ -15,10 +15,6 @@ const DisplayGame = () => {
   const displayScore = useSelector((state) => state.trivia.displayScore)
   const [ shuffledAnswers, setShuffledAnswers ] = useState([]);
 
-  const handleClick = () => {
-    dispatch(finishGame());
-  }
-
   useEffect(() => {
     if (currentQuestion >= 0 && currentQuestion < triviaData.length) {
       const currentAnswers = triviaData[currentQuestion].incorrect_answers.map((answer) => {
@@ -70,12 +66,15 @@ const DisplayGame = () => {
             <p className="inline-block px-3 py-1 mb-4 font-bold text-sm bg-yellow-dark rounded-md">{currentQuestion + 1} / 5</p>
             {renderQuestion}
           </div>
-          <div className="w-full flex flex-start bg-blue">
-            <p onClick={handleClick}>Exit game</p>
+          <div className="w-full flex justify-between">
+            <Button
+              content={"Exit"}
+              exit
+            />
             <Button
               active={isValidated}
               content={"Go to next question"}
-              next
+              next regular
             />
           </div>
         </div>
