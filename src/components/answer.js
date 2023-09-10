@@ -17,14 +17,14 @@ const Answer = (props) => {
 
   const answerClasses = classNames("flex justify-center items-center border-black font-bold text-xs md:text-sm shadow-custom border text-center border-2 rounded-xl hover:cursor-pointer", {
     "bg-green": isValidated && correct,
-    "bg-red": isValidated && !correct,
+    "bg-red-500": isValidated && !correct,
     "bg-white": !isValidated,
   });
 
   return (
     <div className={answerClasses}>
       <p id={correct && "true"} onClick={validateAnswer}
-      className="w-full px-4 py-3 sm:px-6 sm:py-4">{he.decode(props.choice)}</p>
+      className="w-full px-4 py-3 sm:px-3 sm:py-4">{he.decode(props.choice)}</p>
     </div>
   );
 };

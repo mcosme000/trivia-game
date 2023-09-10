@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { updateShowScore, finishGame } from "../slices/triviaSlice";
+import { updateShowScore } from "../slices/triviaSlice";
 import { v4 as uuidv4 } from 'uuid';
 import Question from "./question"
 import Button from "./button";
