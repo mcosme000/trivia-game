@@ -30,7 +30,7 @@ const Button = (props) => {
     "font-bold": regular,
     "bg-gray-200": !active,
     "bg-yellow hover:bg-yellow-dark": active,
-    "bg-gray-200 text-xs text-red-500 px-2 hover:bg-gray-300": exit
+    "bg-gray-200 text-xs text-red-500 px-2 hover:bg-gray-300 ": exit
   });
 
   return (
@@ -39,9 +39,9 @@ const Button = (props) => {
       onClick={handleClick}
       active={isValidated}
     >
-      {exit && <RxCross2 />}
+      {exit && <RxCross2 className="mr-1 text-md"/>}
       {content}
-      {next && <BiRightArrowAlt />}
+      {next && <BiRightArrowAlt/>}
     </button>
   )
 }
