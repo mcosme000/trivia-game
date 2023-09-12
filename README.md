@@ -12,7 +12,7 @@
 </ul>
 
 ## Project view
-<img src="./src/media/trivia01.png">
+<img src="./src/media/trivia.png">
 
 # Update: now you can get hints!
 <p>Users now can get hints for each question by clicking on the icon on top 💡</p>
