@@ -12,7 +12,8 @@ const hintSlice = createSlice({
     hint: "",
     status: "",
     error: null,
-    displayHint: false
+    displayHint: false,
+    hintsUsed: 0,
   },
   reducers: {
     resetHint(state) {
@@ -23,6 +24,12 @@ const hintSlice = createSlice({
     },
     hideHint(state) {
       state.displayHint = false
+    },
+    updateHintsUsed(state) {
+      state.hintsUsed += 1
+    },
+    resetHintsUsed(state) {
+      state.hintsUsed = 0
     }
   },
   extraReducers: (builder) => {
@@ -41,5 +48,5 @@ const hintSlice = createSlice({
   }
 })
 
-export const { updateDisplayHint, hideHint, resetHint } = hintSlice.actions;
+export const { resetHint, updateDisplayHint, hideHint, updateHintsUsed, resetHintsUsed } = hintSlice.actions;
 export const hintSliceReducer = hintSlice.reducer

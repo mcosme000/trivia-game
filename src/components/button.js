@@ -4,13 +4,12 @@ import { BiRightArrowAlt } from "react-icons/bi";
 import { RxCross2 } from "react-icons/rx";
 import { updateCurrentQuestion, resetValidated, finishGame } from "../slices/triviaSlice";
 import { useDispatch, useSelector } from 'react-redux';
-import { hideHint, resetHint } from '../slices/hintSlice';
+import { hideHint, resetHint, resetHintsUsed } from '../slices/hintSlice';
 
 const Button = (props) => {
   const { content, active, regular, next, exit } = props
   const dispatch = useDispatch()
   const isValidated = useSelector((state) => state.trivia.isValidated)
-
 
   const handleClick = () => {
     if (isValidated) {
@@ -22,6 +21,7 @@ const Button = (props) => {
   const handleNextQuestion = () => {
     dispatch(resetHint());
     dispatch(hideHint());
+    dispatch(resetHintsUsed());
     dispatch(updateCurrentQuestion());
     dispatch(resetValidated());
   };
