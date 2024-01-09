@@ -15,17 +15,18 @@
 <img src="./src/media/trivia.png">
 
 # Update: now you can get hints!
-<p>Users now can get hints for each question by clicking on the icon on top 💡</p>
-<p>The hints are provided by chat GPT, and sometimes it is so nice that will give you the correct answer 🥲</p>
+<p>Users can now get hints for each question by clicking on the top icon 💡</p>
+<p>The hints are provided by chat GPT</p>
 <img src="./src/media/screenshoots.png">
 
 
 # Next features:
 <ul>
-  <li>Set hint restrictions so users can only get one per question</li>
+  <li>Set restrictions so users get only one hit per question</li>
   <li>Add new categories</li>
+  <li>Improve design</li>
 </ul>
 
 # Other resources I used in this project:
 <p>I found the main quiz icon on <a href="https://icons8.com/" target="_blank">Icons8</a></p>
-<p><a href="https://react-icons.github.io/react-icons/" target="_blank">React Icons</a> is also a nice choice to get modern icons, and they are super easy to use!</p>
+<p><a href="https://react-icons.github.io/react-icons/" target="_blank">React Icons</a> is also a nice choice to get modern icons!</p>
